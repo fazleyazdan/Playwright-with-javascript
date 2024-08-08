@@ -24,7 +24,7 @@
 
 
 ### Run Tests:
-* there are two ways we can create and run tests.
+* There are two ways we can create and run tests.
 1) write test script using codegen 
 2) write test script by us
 

@@ -23,8 +23,20 @@
 * after executing the test, you can view the report by using the following command `npx playwright show-report`
 
 
-### Run Tests:
+### Understanding the creation flow of tests:
 * There are two ways we can create and run tests.
 1) write test script using codegen 
 2) write test script by us
 
+* most of the times will be writing test script by ourselves.
+* we will create tests in 'tests' folder.
+* the extension name of the test file should be '.specs.js'
+
+### Import necessary modules:
+* to run tests we have to import from node_modules test folder 'node_modules\@playwright\test'
+* we will write this command `require('@playwright/test')`
+* there are many packages in this module and we don't need all of them. we only need 'test' & 'expect' packages to write tests.
+* so we will import only those two packages. `const {test, expect} = require('@playwright/test')`
+* You can use let or const, but the packages should be constant. so we used const
+* **test**: test is package is used for writing tests
+* **expect**: expect package is used for validations

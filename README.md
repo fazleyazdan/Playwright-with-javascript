@@ -30,7 +30,7 @@
 
 * most of the times will be writing test script by ourselves.
 * we will create tests in 'tests' folder.
-* the extension name of the test file should be '.specs.js'
+* the extension name of the test file should be '.spec.js'
 
 ### Import necessary modules:
 * to run tests we have to import from node_modules test folder 'node_modules\@playwright\test'

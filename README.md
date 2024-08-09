@@ -15,10 +15,15 @@
 
 
 ### Execute Tests:
-* to execute test run this command `npx playwright test`.
+* to execute all tests run this command `npx playwright test`.
+* to execute individual test. `npx playwright test 'path of the test file'`
 * tests will be executed in headless mode by default.
 * to run tests in headed mode run this command `npx playwright test --headed`
 * playwright will execute tests on all three browsers it has downloaded. (chromium,webkit,firefox). it is configured by default in **playwright.config**.
+* to execute test on specific browser. `npx playwright test 'path of the test file' --project=chromium`
+* to execute test on specific browser & headed. `npx playwright test 'path of the test file' --project=chromium --headed`
+* to execute test on specific browser, headed & debug. `npx playwright test 'path of the test file' --project=chromium --headed --debug`
+* debug is a very powerful feature, it is recommended to use it.
 * if there is one test case , it will be executed parallel on all browser. so there will be 3 test cases essentially.
 * after executing the test, you can view the report by using the following command `npx playwright show-report`
 

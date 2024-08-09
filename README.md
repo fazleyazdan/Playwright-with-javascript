@@ -14,6 +14,16 @@
 * **package.json**: it is just like the pom.xml. it will contain the the info about the dependencies and libraries you added in project.
 
 
+### Understanding the creation flow of tests:
+* There are two ways we can create and run tests.
+1) write test script using codegen 
+2) write test script by us
+
+* most of the times will be writing test script by ourselves.
+* we will create tests in 'tests' folder.
+* the extension name of the test file should be '.spec.js'
+
+
 ### Execute Tests:
 * to execute all tests run this command `npx playwright test`.
 * to execute individual test. `npx playwright test 'path of the test file'`
@@ -27,15 +37,6 @@
 * if there is one test case , it will be executed parallel on all browser. so there will be 3 test cases essentially.
 * after executing the test, you can view the report by using the following command `npx playwright show-report`
 
-
-### Understanding the creation flow of tests:
-* There are two ways we can create and run tests.
-1) write test script using codegen 
-2) write test script by us
-
-* most of the times will be writing test script by ourselves.
-* we will create tests in 'tests' folder.
-* the extension name of the test file should be '.spec.js'
 
 ### Import necessary modules:
 * to run tests we have to import from node_modules test folder 'node_modules\@playwright\test'

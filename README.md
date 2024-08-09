@@ -47,3 +47,110 @@
 * you can also import it like this. `import {test, expect} from '@playwright/test'`
 * **test**: test is package is used for writing tests
 * **expect**: expect package is used for validations
+
+
+### Sample Test:
+
+``` javascript
+
+const {test, expect} = require('@playwright/test')
+
+// here 'Extract title' is the name of the test
+// {page}: is a fixture which we have to pass to the anonymous function.
+// it contains methods by which we can automate the web page. etc(visiting the web, interacting with elements of web)
+// also before the {page} we have to write async and await. see explanation for it below the test
+
+test('extract url', async ({page}) => {
+    await page.goto('https://playwright.dev/')
+    const page_url = page.url()
+    console.log('URL of the page: ', page_url)
+    // validation
+    await expect(page).toHaveURL('https://playwright.dev/')
+    await page.close()
+})
+
+```
+
+### Async, Await:
+
+* as javascript works asynchronously , which means the steps are not executing in sequence.
+* suppose step1 is executing and it take sometime, then in meantime step 2 will be executed.
+* but in automation we need the script to execute in sequence.
+* to tackle that issue we have to handle something called promises
+
+* when we uses 'async' it make sure that function return promises.
+* then 'await' checks whether that promise is fulfilled or not. meaning if the page is loaded or not.
+* so whenever we use 'await' it checks whether the page is loaded before executing the script
+
+
+### Sample Test 2:
+
+``` javascript
+const {test, expect} = require('@playwright/test')
+
+test('Extract title', async ({page})=> {
+    await page.goto('https://playwright.dev/')
+    
+    // extract full title of the web page
+    const page_title = page.title()
+    console.log('title of web page is: ', page_title)
+
+    // Expect a title "to contain" a substring.  see the commentary below
+    await expect(page).toHaveTitle(/Playwright/)
+
+    // close the page
+    await page.close()
+
+})
+
+```
+
+### What is a Regular Expression (RegEx)?
+A regular expression is a pattern used to match strings of text. In JavaScript, you can create a regular expression by enclosing a pattern in forward slashes, like /playwright/.
+
+* Why Use /Playwright/?
+
+in our code:
+
+`await expect(page).toHaveTitle(/Playwright/);`
+
+* /Playwright/ is a regular expression that matches any title containing the word "Playwright".
+* The regular expression is case-sensitive by default, so it will match "Playwright" exactly as it is.
+
+**Example:**
+
+* If the page title is "Welcome to Playwright", the test will pass because "Playwright" is part of the title.
+* If the page title is "playwright Testing", the test will fail because "Playwright" does not match "playwright" due to case sensitivity.
+
+**Why Not Just Use a String?**
+
+* You could use a string instead of a regular expression if you want an exact match:
+
+`await expect(page).toHaveTitle('Playwright');`
+
+* This would only pass if the title is exactly "Playwright" and nothing else.
+* Using a regular expression like /Playwright/ provides more flexibility, allowing you to match the word "Playwright" even if the title has additional text before or after it.
+
+
+### Locators in Playwright:
+
+Locators in Playwright :
+-----------------------
+There are different ways you can locate elements in playwright
+
+    • Property - [id, name, class or attributes etc]
+
+    • By css selectors
+
+    • By Xpath
+
+Interaction with Locators: 
+-------------------------
+There are two ways by which we can interact with elements in playwright
+
+    1)  await page.locator('locator').click()
+
+    2)  await page.click('locator')
+
+In first approach we locate elements in playwright and then we perform action
+In second approach we perform action first and then pass the element locator.

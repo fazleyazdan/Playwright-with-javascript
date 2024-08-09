@@ -14,7 +14,7 @@
 * **package.json**: it is just like the pom.xml. it will contain the the info about the dependencies and libraries you added in project.
 
 
-### Understanding the creation flow of tests:
+### Where & How to write tests:
 * There are two ways we can create and run tests.
 1) write test script using codegen 
 2) write test script by us

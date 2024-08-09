@@ -14,6 +14,9 @@ test('Extract title', async ({page})=> {
     // Expect a title "to contain" a substring.
     await expect(page).toHaveTitle(/playwright/)
 
+    // close the page
+    page.close()
+
 })
 ```
 
@@ -47,6 +50,7 @@ Without await, the code would continue executing without waiting for the page to
 * await expect(page).toHaveTitle(/Playwright/); waits for the title of the page to match the expected value before continuing.
 Using async and await helps ensure that each step in your test happens in the correct order, making your tests more reliable.
 
+### ! =====================================================================================================
 
 ### What is a Regular Expression (RegEx)?
 A regular expression is a pattern used to match strings of text. In JavaScript, you can create a regular expression by enclosing a pattern in forward slashes, like /playwright/.

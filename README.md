@@ -1,11 +1,60 @@
 # Playwright-with-javascript
 
-### Installation :
+## Outline:
+- [About Playwright](#about-pw)
+- [Playwright Features](#pw-features)
+- [Setup](#pw-setup)
+- [Folder Structure](#folder-structure)
+- [About tests](#tests)
+    - [Execute tests](#tests-exe)
+    - [What to import](#import)
+- [sample tests](#samp-tests)
+- [Async await](#asy-awa)
+- [sample tests 2](#samp-tests2)
+- [Regular Expressions](#regex)
+- [Locators in Playwright](#locators)
+
+
+<a id="about-pw"></a>
+
+### About Playwright:
+
+Playwright enables reliable end-to-end testing for modern web apps.
+
+* Applications supported - Web browser apps , mobile web apps, API
+* Languages supported - Javascript, Typescript, Java, Python & .Net(C#)
+* Browsers supported - Chromium, WebKit(Safari) and Firefox  
+* OS supported - Windows, MacOS, Linux , Support CI Runs
+
+<a id="pw-features"></a>
+
+### Features playwright:
+* Free & open source
+* Multi-Browser , Multi-Language,
+* Easy setup and configuration
+* Functional, API, accessibility testing (we will use third party library for acc testing)
+* Built-in reporters, custom reports (we have built in reports but if you don't like it you can install library for other reports)
+* CI, CD , Docker
+* Parallel testing
+* Auto wait
+* Headed & headless mode
+* Built-in assertions  (in selenium we use testng assertion and in cypress we use mocha or chai assertions) but in playwright we have built-in assertions.
+* Multi tab &multi window (not supported by cypress)
+* Support Frames , Iframes , shadow DOM
+* Support Test Parameters
+* Emulate Mobile devices . Means we can test web apps on vir.device as well.
+* Faster Execution compared to selenium & Cypress.
+* No flaky tests (flaky tests are unstable, which sometimes fails & sometimes pass)
+
+<a id="pw-setup"></a>
+
+### Setup :
 * Download and install Node
 * create a new project and open it in VS Code
 * open the terminal & run this command `npm init playwright@latest`
 * to check whether playwright is installed or not. run this command `npm playwright -v`
 
+<a id="folder-structure"></a>
 
 ### Folder Structure:
 * **node_modules**: contains the dependencies required to work with playwright
@@ -13,6 +62,7 @@
 * **playwright.config**: here we will manage the configuration of the project. we can tailor it according to our needs
 * **package.json**: it is just like the pom.xml. it will contain the the info about the dependencies and libraries you added in project.
 
+<a id="tests"></a>
 
 ### Where & How to write tests:
 * There are two ways we can create and run tests.
@@ -23,6 +73,7 @@
 * we will create tests in 'tests' folder.
 * the extension name of the test file should be '.spec.js'
 
+<a id="tests-exe"></a>
 
 ### Execute Tests:
 * to execute all tests run this command `npx playwright test`.
@@ -37,6 +88,7 @@
 * if there is one test case , it will be executed parallel on all browser. so there will be 3 test cases essentially.
 * after executing the test, you can view the report by using the following command `npx playwright show-report`
 
+<a id="import"></a>
 
 ### Import necessary modules:
 * to run tests we have to import from node_modules test folder 'node_modules\@playwright\test'
@@ -48,6 +100,7 @@
 * **test**: test is package is used for writing tests
 * **expect**: expect package is used for validations
 
+<a id="samp-tests"></a>
 
 ### Sample Test:
 
@@ -57,7 +110,7 @@ const {test, expect} = require('@playwright/test')
 
 // here 'Extract title' is the name of the test
 // {page}: is a fixture which we have to pass to the anonymous function.
-// it contains methods by which we can automate the web page. etc(visiting the web, interacting with elements of web)
+// it contains methods by which we can automate the web page. (visiting the web, interacting with elements of web etc)
 // also before the {page} we have to write async and await. see explanation for it below the test
 
 test('extract url', async ({page}) => {
@@ -70,6 +123,7 @@ test('extract url', async ({page}) => {
 })
 
 ```
+<a id="asy-awa"></a>
 
 ### Async, Await:
 
@@ -82,6 +136,7 @@ test('extract url', async ({page}) => {
 * then 'await' checks whether that promise is fulfilled or not. meaning if the page is loaded or not.
 * so whenever we use 'await' it checks whether the page is loaded before executing the script
 
+<a id="samp-tests2"></a>
 
 ### Sample Test 2:
 
@@ -104,6 +159,8 @@ test('Extract title', async ({page})=> {
 })
 
 ```
+
+<a id="regex"></a>
 
 ### What is a Regular Expression (RegEx)?
 A regular expression is a pattern used to match strings of text. In JavaScript, you can create a regular expression by enclosing a pattern in forward slashes, like /playwright/.
@@ -131,8 +188,7 @@ in our code:
 * This would only pass if the title is exactly "Playwright" and nothing else.
 * Using a regular expression like /Playwright/ provides more flexibility, allowing you to match the word "Playwright" even if the title has additional text before or after it.
 
-
-### Locators in Playwright:
+<a id="locators"></a>
 
 Locators in Playwright :
 -----------------------
@@ -154,3 +210,24 @@ There are two ways by which we can interact with elements in playwright
 
 In first approach we locate elements in playwright and then we perform action
 In second approach we perform action first and then pass the element locator.
+
+### For locating single web elements:
+
+### Locating elements using property:
+
+* when locating elements via property attribute. copy the key as well as value of it
+* for example if we wanna locate element via id.  id ='login'. then copy the entire key value
+* like this `await page.click('id=login')`.
+* and we don't need to wrap the value in single or double quotes. as you can see the *login* is not in quotes when used as locator.
+
+
+### Locating elements using css selectors:
+
+* to locate elements through css selectors you will only need tag & value of an attribute. tag is optional
+* in this case we are interacting with an input element. there are two ways you can do this
+* `await page.locator('#username').fill('fazleyazdan')`
+* `await page.fill('#username','fazleyazdan')`
+* for an input field you can also `page.type()` method.
+
+
+### For locating Multiple web elements:

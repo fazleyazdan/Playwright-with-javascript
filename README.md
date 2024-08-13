@@ -13,6 +13,12 @@
 - [sample tests 2](#samp-tests2)
 - [Regular Expressions](#regex)
 - [Locators in Playwright](#locators)
+    - [Interacting with Locators](#locators-in)
+    - [Locating Single Elements](#locators-single)
+    - [Locating Multiple Elements](#locators-multi)
+    - [Built-in Locators](#locators-built)
+    
+    
 
 
 <a id="about-pw"></a>
@@ -200,6 +206,8 @@ There are different ways you can locate elements in playwright
 
     • By Xpath
 
+<a id="locators-in"></a>
+
 Interaction with Locators: 
 -------------------------
 There are two ways by which we can interact with elements in playwright
@@ -211,9 +219,11 @@ There are two ways by which we can interact with elements in playwright
 In first approach we locate elements in playwright and then we perform action
 In second approach we perform action first and then pass the element locator.
 
+<a id="locators-single"></a>
+
 ### For locating single web elements:
 
-### Locating elements using property:
+### Locating elements by property:
 
 * when locating elements via property attribute. copy the key as well as value of it
 * for example if we wanna locate element via id.  id ='login'. then copy the entire key value
@@ -221,7 +231,7 @@ In second approach we perform action first and then pass the element locator.
 * and we don't need to wrap the value in single or double quotes. as you can see the *login* is not in quotes when used as locator.
 
 
-### Locating elements using css selectors:
+### Locating elements by css selectors:
 
 * to locate elements through css selectors you will only need tag & value of an attribute. tag is optional
 * in this case we are interacting with an input element. there are two ways you can do this
@@ -229,9 +239,13 @@ In second approach we perform action first and then pass the element locator.
 * `await page.fill('#username','fazleyazdan')`
 * for an input field you can also `page.type()` method.
 
+<a id="locators-multi"></a>
 
 ### For locating Multiple web elements:
 
+
+
+<a id="locators-built"></a>
 
 ### Built-in Locators: 
 

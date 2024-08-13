@@ -243,9 +243,9 @@ In second approach we perform action first and then pass the element locator.
 
 ### For locating Multiple web elements:
 
-* `await page.$$('//a')`
+* `await page.$$("//a")`
 * The above locator will catch elements having anchor tag.
-* most of the times we use `await page.waitForSelector("//div//h4//a")` with it to wait for elements to load before doing any actions.
+* most of the times we use `await page.waitForSelector("//a")` with it to wait for elements to load before doing any actions.
 
 <a id="locators-built"></a>
 

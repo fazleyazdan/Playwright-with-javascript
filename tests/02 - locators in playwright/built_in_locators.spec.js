@@ -40,5 +40,4 @@ test('Built-in Locators', async ({page}) => {
 
     // page.getByLabel() if an element has label tag, we can use this locator
 
-
 })

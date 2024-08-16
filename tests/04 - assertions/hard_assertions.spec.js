@@ -50,4 +50,11 @@ test('assertions', async ({page}) => {
     //! also this is useful in multiple number of elements & links, to validate their occurrence 
 
     await expect(await page.locator('#country option')).toHaveCount(10)
+
+    //! Negative assertions : For every positive assertions, there are negative assertions as well
+
+    const mondayCheckbox = await page.locator('#monday')
+    await expect(mondayCheckbox).not.toBeChecked()
+
+    
 })

@@ -29,5 +29,23 @@ test('assertions', async ({page}) => {
     await expect(genderCheckBox).toBeChecked()
 
     // 6: await expect(locator).toHaveAttribute()  element has a DOM attribute
-    
+    const inputElement= await page.locator('#name')
+    await expect(inputElement).toHaveAttribute('type', 'text')
+
+    // 7: await expect(locator).toHaveText()     element contains exact text
+    const pageTitle = await page.locator('#header-inner h1')
+    await expect(pageTitle).toHaveText('Automation Testing Practice')
+
+    // 8: await expect(locator).toContainText()  element contains part of text
+    await expect(pageTitle).toContainText('Testing')
+
+    // 9: await expect(locator).toHaveValue()    input has a value
+    await searchBox.fill('Khalid bin waleed')
+    await expect(searchBox).toHaveValue('Khalid bin waleed')
+
+    // 10: await expect(locator).toHaveCount() 
+    //! This is useful in dropdown to validate how many options does it have
+    //! also this is useful in multiple number of elements & links, to validate their occurrence 
+
+    await expect(await page.locator('#country option')).toHaveCount(10)
 })

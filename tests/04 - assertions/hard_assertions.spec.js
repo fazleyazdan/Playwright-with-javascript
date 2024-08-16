@@ -1,6 +1,8 @@
 import {test, expect } from '@playwright/test';
-import exp from 'constants';
 
+
+//! Hard Assertions: in this kind of assertions, if an assertions fails
+//! The program will terminate and the statements/script after it won't execute
 
 test('assertions', async ({page}) => {
 

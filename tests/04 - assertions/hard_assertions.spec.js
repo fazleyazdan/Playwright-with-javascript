@@ -51,10 +51,10 @@ test('assertions', async ({page}) => {
 
     await expect(await page.locator('#country option')).toHaveCount(10)
 
-    //! Negative assertions : For every positive assertions, there are negative assertions as well
+    //! Negative assertions : For every positive assertions, there are negative assertions as well. they are preceded by 'not'
 
     const mondayCheckbox = await page.locator('#monday')
     await expect(mondayCheckbox).not.toBeChecked()
 
-    
+
 })

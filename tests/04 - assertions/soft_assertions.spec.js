@@ -9,8 +9,8 @@ test('soft assertions', async ({page}) => {
 
     await expect(page).toHaveTitle("STORE")              // Hard assertion, if it fails the rest of test won't execute
 
-    // Soft assertions, the title is incorrect, however it won't terminate rest of the test execution. 
-    await expect.soft(page).toHaveTitle("STORE123")      
+    // Soft assertions: it won't terminate rest of the test execution even if it fails.
+    await expect.soft(page).toHaveTitle("STORE")      
 
     // if you wanna make an assertions soft, write 'soft' after 'expect'
     await expect.soft(page).toHaveURL("https://www.demoblaze.com/")

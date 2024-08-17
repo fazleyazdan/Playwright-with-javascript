@@ -1,7 +1,7 @@
 const {test, expect} = require('@playwright/test')
 
 
-test('text input', async ({page}) => {
+test('radio buttons', async ({page}) => {
 
     await page.goto("https://testautomationpractice.blogspot.com/")
 

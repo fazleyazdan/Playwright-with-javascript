@@ -33,6 +33,6 @@ test('text input', async ({page}) => {
 //* await expect(input_box.isEnabled).toBeTruthy()                         
 
 //* (input_box.isEnabled()): this statement will return true because the input_box is enabled
-//* await expect(true).toBeTruthy() : will pass because true is always truthy
+//* await expect(true).toBeTruthy() : will pass because true is always truthy.
 
 

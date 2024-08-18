@@ -10,12 +10,13 @@ test('radio buttons', async ({page}) => {
     await page.locator('#male').check()                         // select radio buttons
 
 
-    await expect(await page.locator('#male')).toBeChecked()     // Validate Check box is checked
+    await expect(await page.locator('#male')).toBeChecked()     // Validate radio Button is selected
     
     // some other assertions
     await expect(await page.locator('#male').isChecked()).toBeTruthy()     // Code Commentary below
     await expect(await page.locator('#female').isChecked()).toBeFalsy()    // Code Commentary below
    
+
     await page.waitForTimeout(5000)            // wait for 5 sec before closing the browser
 
 

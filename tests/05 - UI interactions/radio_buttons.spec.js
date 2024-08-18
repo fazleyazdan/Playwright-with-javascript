@@ -7,7 +7,7 @@ test('radio buttons', async ({page}) => {
 
     // assertions we can do on text input
     await expect(await page.locator('#male')).toBeVisible()
-    await page.locator('#male').check()                         // check the checkbox
+    await page.locator('#male').check()                         // select radio buttons
 
 
     await expect(await page.locator('#male')).toBeChecked()     // Validate Check box is checked

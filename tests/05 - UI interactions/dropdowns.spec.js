@@ -4,6 +4,7 @@
 // we have auto suggestion dropdowns as well as hidden and dynamic dropdowns
 
 import {test,expect} from '@playwright/test'
+import { stat } from 'fs'
 
 test('drop downs', async ({page}) => {
 
@@ -32,13 +33,60 @@ test('drop downs', async ({page}) => {
     //! Assertions on dropdowns
 
     // compare the number of known options with that on the web
-    const numOptions = await page.locator('#country options')
+    const numOptions = await page.locator('#country option')
     await expect(numOptions).toHaveCount(10)
 
     // check number of options in dropdowns
-    const options = await page.$$('#country options') 
-    console('total number of options in dropdown: ', options.length)             // print length of the options
-    await expect(options.length).toBe(10)                                        // validations on options length
+    const options = await page.$$('#country option') 
+    console.log('total number of options in dropdown: ', options.length)             // print length of the options
+    await expect(options.length).toBe(10)                                            // validations on options length
+
+    // check presence of particular option in dropdown through built-in methods
+    const content = await page.locator('#country').textContent()        // this will return all dropdowns text in form of string
+    await expect(content.includes('Japan')).toBeTruthy()                // This will return True or False and then compare with the truthy or falsy
+    
+    // console.log('content: ', content)
+
+    // check presence of particular option in dropdown through looping - Approach 1
+
+    const optionsLoop = await page.$$('#country option') 
+
+    let status = false
+    // for (const options of optionsLoop)
+    // {
+    //     if (await options.textContent() == 'Japan')
+    //     status = true
+    //     else
+    //     continue    
+    // }
+
+    // if(status == true)
+    //     console.log('test case passed!')
+
+    // check presence of particular option in dropdown through looping - Approach 2
+
+    for (const options of optionsLoop)
+        {
+            let optionsText = await options.textContent()
+            if(optionsText.includes('Brazil'))
+            {
+                status = true
+                break
+            }
+        }
+    
+    await expect(status).toBeTruthy()
+    
+
+    // select option from dropdown using loop
+    for (const options of optionsLoop)
+        {
+            let optionsText = await options.textContent()
+            if(optionsText.includes('France'))
+            {
+                await page.selectOption('#country', optionsText)
+            }
+        }
 
     await page.waitForTimeout(2000)
 })

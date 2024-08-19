@@ -78,7 +78,7 @@ test('drop downs', async ({page}) => {
     await expect(status).toBeTruthy()
     
 
-    // select option from dropdown using loop
+    // select option from dropdown using loop - useful for dynamic & auto suggestive dropdowns
     for (const options of optionsLoop)
         {
             let optionsText = await options.textContent()

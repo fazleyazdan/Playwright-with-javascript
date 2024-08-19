@@ -4,7 +4,6 @@
 // we have auto suggestion dropdowns as well as hidden and dynamic dropdowns
 
 import {test,expect} from '@playwright/test'
-import { stat } from 'fs'
 
 test('drop downs', async ({page}) => {
 

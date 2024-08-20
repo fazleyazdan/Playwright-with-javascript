@@ -2,7 +2,7 @@
 
 import {test,expect} from '@playwright/test'
 
-test('drop downs', async ({page}) => {
+test('Multi drop dropdowns', async ({page}) => {
 
     await page.goto('https://testautomationpractice.blogspot.com/')
 
@@ -26,9 +26,10 @@ test('drop downs', async ({page}) => {
     await expect(options.length).toBe(5)                                            // validations on options length
 
     // check presence of particular option in dropdown through built-in methods
-    const content = await page.locator('#colors').textContent()        // this will return all dropdowns text in form of string
+    const content = await page.locator('#colors').textContent()         // this will return all dropdowns text in form of string
     await expect(content.includes('Red')).toBeTruthy()                  // This will return True or False and then compare with the truthy or falsy
-    
+    await expect(content.includes('xyz')).toBeFalsy()                   // because this option is not in the dropdowns 
+
     console.log('content: ', content)
 
     await page.waitForTimeout(2000)

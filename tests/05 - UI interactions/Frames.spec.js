@@ -10,8 +10,8 @@ test('Handling Frames', async({page}) => {
     await page.goto("https://ui.vision/demo/webtest/frames/")
     
     // find total number of frames on the page
-    const totalFrames = await page.frame()
-    console.log("Total num of Frames:", totalFrames)
+    const totalFrames = await page.frames()
+    console.log("Total num of Frames:", totalFrames.length)
 
     // Approach 1: locate Frame through Frame Locator
     const inputBox = await page.frameLocator("frame[src='frame_1.html']").locator("input[name='mytext1']")

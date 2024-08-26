@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // frame is external pages embedded into a single page
 // meaning frame have whole actual page but they are shown in another page
 // Now the problem is we cannot directly interact with element inside the frames
@@ -17,7 +16,6 @@ test('Handling Frames', async({page}) => {
     // Approach 1: locate Frame through Frame Locator
     const inputBox = await page.frameLocator("frame[src='frame_1.html']").locator("input[name='mytext1']")
     await inputBox.fill('Hello')
+
+    // Approach Number 2:
 })
-=======
- 
->>>>>>> 03b9c87312bc5aa38820886f364a27c7f67430b4

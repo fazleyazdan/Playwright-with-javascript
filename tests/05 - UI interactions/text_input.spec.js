@@ -34,5 +34,3 @@ test('text input', async ({page}) => {
 
 //* (input_box.isEnabled()): this statement will return true because the input_box is enabled
 //* await expect(true).toBeTruthy() : will pass because true is always truthy.
-
-

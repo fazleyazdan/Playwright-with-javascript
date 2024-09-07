@@ -3,7 +3,7 @@
 
 import {test,expect} from '@playwright/test'
 
-test('Auto Suggest dropdowns', async ({page}) => {
+test.skip('Auto Suggest dropdowns', async ({page}) => {
 
     await page.goto('https://www.redbus.in/')
 

@@ -17,15 +17,27 @@ test('count rows & cols', async({page}) => {
     
     // you can also find table cols & rows through this way
     const table_cols = await table.locator('thead th')
-    const rows_table = await table.locator('tbody tr')
+    const table_rows = await table.locator('tbody tr')
 
-    console.log('Total number of Cols: ', await table_cols.count())
-    console.log('Total number of Rows: ', await rows_table.count())
+    //! NOTE: Count method works if the element is located via parent element. 
+    //! in our case we have got rows & cols via 'table' which is the parent.
+    
+    console.log('Total number of Cols: ', await table_cols.count())    
+    console.log('Total number of Rows: ', await table_rows.count())
     
     
     // Validations
+    await expect(table_rows).toBe(5)
     await expect(cols.length).toBe(4)
     await expect(rows.length).toBe(5)
 
 
 })
+
+
+//* Findings :
+// 1: with page.$$ ,  the count() does not work
+// 2: with page.locator the length method does not work.
+
+// so to conclude, page.$$ get multiple elements. length method works with it
+// page.locator() can get multiple elements but you cannot use length method with only counts works with it.

@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 
-test('count rows & cols', async({page}) => {
+test('Manipulation on table', async({page}) => {
 
     await page.goto('https://testautomationpractice.blogspot.com/')
 

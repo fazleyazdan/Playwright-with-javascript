@@ -13,21 +13,10 @@ test('Table - extract data from single page', async({page}) => {
 
 
     //* getting table data from first page
-    //* for that we will use 3 loops. first one for pagination, one for rows & one for cols
+    //* for that we will use 2 loops one for rows & one for cols
 
-    const all_pages = await page.locator(".pagination li a")
-
-    for(let p=0; p< await all_pages.count(); p++)
-    {  
-    
-        // by default we are on first page and it is represented by 0, so after first iteration we are switching the pages to get data from it
-        if(p > 0)                   
-        {
-            await all_pages.nth(p).click()
-        }
-
-        for(let i=0; i<await rows.count(); i++)
-        {
+    for(let i=0; i<await rows.count(); i++)
+    {
 
         const row = rows.nth(i)                        // represent the current row
         const tds = row.locator('td')                  // get tds of the current row because all data is inside it
@@ -35,15 +24,12 @@ test('Table - extract data from single page', async({page}) => {
                                                        // don't get confused between tds & cols, since we need text of tds so we used it instead of cols to reduce code lines
         // for(j=0; j<await cols.count()-1; j++)
         
-            for(let j=0; j<await tds.count()-1; j++)       // tds.count()-1 : because we don't the last col      
+        for(let j=0; j<await tds.count()-1; j++)       // tds.count()-1 : because we don't the last col      
         
-            {
-                console.log(await tds.nth(j).textContent())
-            }
-            
-            // await page.waitForTimeout(1000)       // uncomment to see it slowly changing the pages
-        } 
-   
-   }
+        {
+            console.log(await tds.nth(j).textContent())
+        }
+    } 
+
     await page.waitForTimeout(3000)
 })

@@ -36,16 +36,3 @@ test('count rows & cols', async({page}) => {
 
     await page.waitForTimeout(3000)
 })
-
-
-// function for getting specific row
-async function selectProduct(row, page, name)
-{
- 
-    const matchedRow = row.filter({
-        has: page.locator('td'),
-        hasText: name
-    })
-
-    await matchedRow.locator('input').check()
-}

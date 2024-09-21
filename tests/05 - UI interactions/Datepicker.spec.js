@@ -33,6 +33,12 @@ test('Date Picker', async({page})=> {
         await page.click(".ui-icon.ui-icon-circle-triangle-e")               // click next until we have expected year & month
     }
 
+    // now once you matched month & year we can click the date
+    // we can do so by parameterizing xpath
+    // so we have to look for a common xpath, having text attribute 
+    // make sure to wrap locator with in string literals when parameterizing xpath
+
+    await page.click(`//a[@class='ui-state-default'][text()=${day}]`)
 
     await page.waitForTimeout(3000)
 })

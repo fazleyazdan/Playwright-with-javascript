@@ -35,10 +35,24 @@ test('Date Picker', async({page})=> {
 
     // now once you matched month & year we can click the date
     // we can do so by parameterizing xpath
-    // so we have to look for a common xpath, having text attribute 
+    // so we have to look for a common xpath, having text attribute or through normalize-space
     // make sure to wrap locator with in string literals when parameterizing xpath
 
-    await page.click(`//a[@class='ui-state-default'][text()=${day}]`)
+    // await page.click(`//a[@class='ui-state-default'][text()=${day}]`)
+    await page.click(`//a[normalize-space()=${day}]`)
+
+    //! if there is not way to parameterize xpath, follow this method
+
+    // const dates = await page.$$("//a[@class='ui-state-default']")
+
+    // for (const d of dates)
+    // {
+    //     if (await d.textContent() == day) 
+    //     {
+    //         d.click()
+    //         break
+    //     }
+    // }
 
     await page.waitForTimeout(3000)
 })

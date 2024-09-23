@@ -12,7 +12,7 @@ test('Extract title', async ({page})=> {
     await expect(page).toHaveTitle(/Playwright/)
 
     // close the page
-    await page.close()
+    await page.waitForTimeout(1000)
 
 })
 

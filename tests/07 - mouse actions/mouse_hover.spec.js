@@ -8,8 +8,8 @@ test('Mouse Hover', async({page}) => {
     const link2 = await page.locator("//a[normalize-space()='Link 2']")
 
     //* use hover method to hover over elements
-    dropdown.hover()
-    link2.hover()
+    await dropdown.hover()
+    await link2.hover()
 
     await page.waitForTimeout(2000)
 })

@@ -10,7 +10,7 @@ test('Mouse double click', async({page}) => {
     // double click
     await copybtn.dblclick()
     
-    // validate if text is copied into the field after double click. we have used value b/c it does not support tohavetext most times
+    // validate if text is copied into the field after double click. toHaveValue: is used to check what is inside input field
     await expect(field2).toHaveValue('Hello World!')
 
     await page.waitForTimeout(2000)

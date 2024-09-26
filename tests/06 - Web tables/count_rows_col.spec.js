@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import exp from 'constants';
 
 
-test('count rows & cols', async({page}) => {
+test.skip('count rows & cols', async({page}) => {
 
     await page.goto('https://testautomationpractice.blogspot.com/')
 

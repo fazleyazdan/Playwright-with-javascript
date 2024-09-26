@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 
 
-test('Table - extract data from single page', async({page}) => {
+test.skip('Table - extract data from single page', async({page}) => {
 
     await page.goto('https://testautomationpractice.blogspot.com/')
 

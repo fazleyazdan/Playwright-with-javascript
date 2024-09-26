@@ -1,10 +1,8 @@
 name: Playwright Tests
 
+# Add workflow_dispatch to trigger the workflow manually
 on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
   test:
@@ -24,7 +22,6 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    # Add secrets as environment variables here
     - name: Set up environment variables
       run: echo "EMAIL=${{ secrets.EMAIL }}" >> $GITHUB_ENV
            echo "PASSWORD=${{ secrets.PASSWORD }}" >> $GITHUB_ENV

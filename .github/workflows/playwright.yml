@@ -1,24 +1,44 @@
 name: Playwright Tests
+
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
 jobs:
   test:
     timeout-minutes: 120
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
+
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+
     - name: Install dependencies
       run: npm ci
+
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+
+    # Add secrets as environment variables here
+    - name: Set up environment variables
+      run: echo "EMAIL=${{ secrets.EMAIL }}" >> $GITHUB_ENV
+           echo "PASSWORD=${{ secrets.PASSWORD }}" >> $GITHUB_ENV
+           echo "AD_EMAIL=${{ secrets.AD_EMAIL }}" >> $GITHUB_ENV
+           echo "PHONE=${{ secrets.PHONE }}" >> $GITHUB_ENV
+
     - name: Run Playwright tests
       run: npx playwright test
+      env:
+        EMAIL: ${{ secrets.EMAIL }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        AD_EMAIL: ${{ secrets.AD_EMAIL }}
+        PHONE: ${{ secrets.PHONE }}
+
     - uses: actions/upload-artifact@v4
       if: always()
       with:

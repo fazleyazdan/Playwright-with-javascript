@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 120
+    timeout-minutes: 60
     runs-on: ubuntu-latest
 
     steps:
@@ -22,22 +22,30 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    - name: Set up environment variables
-      run: echo "EMAIL=${{ secrets.EMAIL }}" >> $GITHUB_ENV
-           echo "PASSWORD=${{ secrets.PASSWORD }}" >> $GITHUB_ENV
-           echo "AD_EMAIL=${{ secrets.AD_EMAIL }}" >> $GITHUB_ENV
-           echo "PHONE=${{ secrets.PHONE }}" >> $GITHUB_ENV
+    # Set up environment variables from GitHub Secrets
+    - name: Set environment variables from secrets
+      run: |
+        echo "EMAIL=${{ secrets.EMAIL }}" >> $GITHUB_ENV
+        echo "PASSWORD_WPC=${{ secrets.PASSWORD_WPC }}" >> $GITHUB_ENV
+        echo "AD_EMAIL=${{ secrets.AD_EMAIL }}" >> $GITHUB_ENV
+        echo "PHONE=${{ secrets.PHONE }}" >> $GITHUB_ENV
+
+    # Debug Environment Variables
+    - name: Debug Environment Variables
+      run: |
+        echo "Email: ${{ secrets.EMAIL }}"
+        echo "Password: ${{ secrets.PASSWORD_WPC }}"
 
     - name: Run Playwright tests
       run: npx playwright test
       env:
         EMAIL: ${{ secrets.EMAIL }}
-        PASSWORD: ${{ secrets.PASSWORD }}
+        PASSWORD_WPC: ${{ secrets.PASSWORD_WPC }}
         AD_EMAIL: ${{ secrets.AD_EMAIL }}
         PHONE: ${{ secrets.PHONE }}
 
     - uses: actions/upload-artifact@v4
-      if: always()
+      if: ${{ !cancelled() }}
       with:
         name: playwright-report
         path: playwright-report/

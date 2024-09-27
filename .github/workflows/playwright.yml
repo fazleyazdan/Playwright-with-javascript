@@ -40,7 +40,7 @@ jobs:
       run: npx playwright test --workers=4
       env:
         EMAIL: ${{ secrets.EMAIL }}
-        PASSWORD_WPC: ${{ secrets.PASSWORD_WPC }}
+        PASSWORD: ${{ secrets.PASSWORD }}
         AD_EMAIL: ${{ secrets.AD_EMAIL }}
         PHONE: ${{ secrets.PHONE }}
 

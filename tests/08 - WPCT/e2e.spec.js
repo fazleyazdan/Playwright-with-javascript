@@ -9,7 +9,6 @@ test('E2E client side', async({page}) => {
     const email = process.env.EMAIL
     const password = process.env.PASSWORD
     const phone = process.env.PHONE
-    console.log(email)
 
     await page.goto('https://workpermitconsultancy.com/')
 

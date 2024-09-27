@@ -26,7 +26,7 @@ jobs:
     - name: Set environment variables from secrets
       run: |
         echo "EMAIL=${{ secrets.EMAIL }}" >> $GITHUB_ENV
-        echo "PASSWORD_WPC=${{ secrets.PASSWORD_WPC }}" >> $GITHUB_ENV
+        echo "PASSWORD_WPC=${{ secrets.PASSWORD }}" >> $GITHUB_ENV
         echo "AD_EMAIL=${{ secrets.AD_EMAIL }}" >> $GITHUB_ENV
         echo "PHONE=${{ secrets.PHONE }}" >> $GITHUB_ENV
 
@@ -34,7 +34,7 @@ jobs:
     - name: Debug Environment Variables
       run: |
         echo "Email: ${{ secrets.EMAIL }}"
-        echo "Password: ${{ secrets.PASSWORD_WPC }}"
+        echo "Password: ${{ secrets.PASSWORD }}"
 
     - name: Run Playwright tests with 4 workers
       run: npx playwright test --workers=4

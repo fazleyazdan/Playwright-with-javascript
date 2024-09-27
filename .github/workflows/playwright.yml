@@ -36,8 +36,8 @@ jobs:
         echo "Email: ${{ secrets.EMAIL }}"
         echo "Password: ${{ secrets.PASSWORD_WPC }}"
 
-    - name: Run Playwright tests
-      run: npx playwright test
+    - name: Run Playwright tests with 4 workers
+      run: npx playwright test --workers=4
       env:
         EMAIL: ${{ secrets.EMAIL }}
         PASSWORD_WPC: ${{ secrets.PASSWORD_WPC }}

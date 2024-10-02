@@ -32,3 +32,6 @@ test.describe('Group 2', ()=> {
         console.log("This is test 4")
     })
 })
+
+
+//! sometimes the tests may execute in parallel, if you wanna change that setting go to config file & make 'fully parallel" option false

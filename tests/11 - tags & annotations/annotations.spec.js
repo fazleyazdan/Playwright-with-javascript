@@ -1,8 +1,10 @@
 import { test, expect, chromium } from "@playwright/test";
 
+//! to understand every annotation better, uncomment test & run it individually
 // There are different annotations in playwright
 // some of them we have used previously like skip,only.
 // there are more like fixme(), slow() & fail()
+
 
 //! only : will execute test with only tag out of all tests
 
@@ -101,4 +103,4 @@ test('Test8', async({page}) =>{
 })
 
 
-//! to understand every annotation better, uncomment test & run it individually 
+ 

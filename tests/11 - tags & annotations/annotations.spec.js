@@ -101,4 +101,3 @@ test('Test8', async({page}) =>{
     console.log("This is Test 8")
     await page.goto("https://www.demoblaze.com/")
 })
-

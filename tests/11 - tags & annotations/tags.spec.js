@@ -44,3 +44,4 @@ import { test} from "@playwright/test";
 
 //* npx playwright test tags.spec.js --project=chromium --headed --grep "@sanity" --grep-invert "@regression"
 // now this time test 5 will not be executed because it contains regression as well
+

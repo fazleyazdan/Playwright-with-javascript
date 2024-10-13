@@ -17,3 +17,4 @@ test('checking trace viewer', async({page}) => {
     await page.click("button[onclick='logIn()']")
     await page.waitForTimeout(1000)
 })
+

@@ -15,4 +15,3 @@ test('Mouse double click', async({page}) => {
 
     await page.waitForTimeout(2000)
 })
-

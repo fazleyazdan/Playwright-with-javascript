@@ -1,6 +1,7 @@
 import { test,expect } from '@playwright/test';
 import { LoginPage } from '../../pages/loginPage';
 import { HomePage } from '../../pages/homePage';
+import { waitForDebugger } from 'inspector';
 
 test('page objects demo', async({page}) => {
 
@@ -12,10 +13,12 @@ test('page objects demo', async({page}) => {
 
     await login.visitWebPage()
     await login.loginToWeb('admin777', 'admin123')
-    await page.waitForTimeout(4000)
+
+    await page.waitForTimeout(3000)
 
     // Homepage: add product to cart
+    await home.addProductCart("Nexus 6")
 
-
+    await page.waitForTimeout(4000)
 
 })

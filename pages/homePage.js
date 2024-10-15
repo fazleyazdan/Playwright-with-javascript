@@ -6,6 +6,7 @@ exports.HomePage = class HomePage
         this.page = page
         this.allProducts = "//div/h4/a"
         this.addToCart = ".btn.btn-success.btn-lg"
+        this.cartButton = "#cartur"
     }
 
     async addProductCart(productName)
@@ -34,5 +35,10 @@ exports.HomePage = class HomePage
         
         })
 
+    }
+
+    async gotoCart()
+    {
+        await this.page.locator(this.cartButton).click()
     }
 }

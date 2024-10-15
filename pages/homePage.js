@@ -14,7 +14,7 @@ exports.HomePage = class HomePage
 
         for (const product of productList)
         {
-            if (productName == product.textContent())
+            if (productName == await product.textContent())
             {
                 await product.click()
                 break
@@ -28,8 +28,11 @@ exports.HomePage = class HomePage
             {
                 await dialog.accept()
             }
+
+            
+            await this.page.locator(this.addToCart).click()
+        
         })
 
-        await this.page.click(this.addToCart)
     }
 }

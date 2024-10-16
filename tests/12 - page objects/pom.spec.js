@@ -25,7 +25,7 @@ test('page objects demo', async({page}) => {
     await page.waitForTimeout(5000)
 
     // CartPage : check if the products are added
-    const status = await cart.checkIfProductAdded("Nokia lumia 1520")
+    const status = await cart.checkIfProductAdded("Nexus 6")
     await expect(status).toBe(true)
     await page.waitForTimeout(4000)
 })

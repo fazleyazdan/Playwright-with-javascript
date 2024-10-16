@@ -5,7 +5,7 @@ exports.HomePage = class HomePage
     {
         this.page = page
         this.allProducts = "//div/h4/a"
-        this.addToCart = ".btn.btn-success.btn-lg"
+        this.addToCart = "//a[normalize-space()='Add to cart']"
         this.cartButton = "#cartur"
     }
 
@@ -25,15 +25,15 @@ exports.HomePage = class HomePage
         //! handle dialog before it appears
         await this.page.on('dialog', async dialog => {
 
-            if(dialog.message.include() == 'added')
-            {
-                await dialog.accept()
-            }
-
-            
-            await this.page.locator(this.addToCart).click()
+            await dialog.accept()
+            // if(dialog.message().includes() == 'added')
+            // {
+            //     await dialog.accept()
+            // }
         
         })
+
+        await this.page.locator(this.addToCart).click()
 
     }
 

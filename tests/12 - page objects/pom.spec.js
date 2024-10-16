@@ -2,7 +2,6 @@ import { test,expect } from '@playwright/test';
 import { LoginPage } from '../../pages/loginPage';
 import { HomePage } from '../../pages/homePage';
 import { CartPage } from '../../pages/cartPage';
-import exp from 'constants';
 
 test('page objects demo', async({page}) => {
 

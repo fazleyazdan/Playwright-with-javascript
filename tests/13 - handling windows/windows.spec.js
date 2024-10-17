@@ -10,8 +10,31 @@ import {test, expect, chromium } from "@playwright/test";
 
 test('handling windows', async() => {
 
-    // first create browser
+    // first create browser & then context
     const browser = await chromium.launch()
     const context = await browser.newContext()
 
+    // create pages
+    const page1 = await context.newPage()
+    const page2 = await context.newPage()
+
+    // if you wanna know how many pages you have created
+    const allPages = context.pages()
+    console.log("No of Pages created:", allPages.length)
+
+    await page1.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+    await expect(page1).toHaveTitle("OrangeHRM")
+
+    await page2.goto("https://www.demoblaze.com/cart.html#")
+    await expect(page2).toHaveTitle("STORE")
+
+    await page1.waitForTimeout(2000)
+    await page2.waitForTimeout(2000)
+
+
 })
+
+
+/* Each BrowserContext can have multiple pages. 
+A Page refers to a single tab or a popup window within a browser context. 
+It should be used to navigate to URLs and interact with the page content. */

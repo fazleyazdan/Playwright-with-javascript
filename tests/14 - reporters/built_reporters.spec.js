@@ -19,7 +19,7 @@ export default defineConfig({
 
 */
 
-//! most of these reporters will change the result of tests on terminal
+//! most of these reporters will only change the output on terminal
 
 
 import { test,expect } from "@playwright/test";

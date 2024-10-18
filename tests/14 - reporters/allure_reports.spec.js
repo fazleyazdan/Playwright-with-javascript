@@ -13,23 +13,23 @@ after that a new folder with name allure-report will be created.
 
 import { test,expect } from "@playwright/test";
 
-test('reporters', async({page}) => {
+test('test1', async({page}) => {
 
     await page.goto("https://www.demoblaze.com/cart.html#")
     await expect(page).toHaveTitle("STORE")
 })
 
 
-test('reporter test', async({page}) => {
+test('test2', async({page}) => {
 
     await page.goto('https://playwright.dev/')
     await expect(page).toHaveTitle(/Playwright/)
 
 })
 
-test('reporter test', async({page}) => {
+test('test3', async({page}) => {
 
     await page.goto('https://www.opencart.com/index.php?route=cms/demo')
     await expect(page).toHaveTitle("OpenCart - Demo")
-    
+
 })

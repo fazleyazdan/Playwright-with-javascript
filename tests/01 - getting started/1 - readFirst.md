@@ -82,5 +82,5 @@ in our code:
 * sometimes the test are failing and passing (flaky tests).
 * when a test fails you wanna run it again for the flaky tests.
 * run this command `npx playwright test abc.spec.js --retries=2`
-* you can give as many retries you want.
+* you can give as many retries you want. so playwright will rerun the failed test until run out of retries
 

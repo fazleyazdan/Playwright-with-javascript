@@ -78,4 +78,9 @@ in our code:
 * This would only pass if the title is exactly "Playwright" and nothing else.
 * Using a regular expression like /Playwright/ provides more flexibility, allowing you to match the word "Playwright" even if the title has additional text before or after it.
 
+### Flaky test & retries:
+* sometimes the test are failing and passing (flaky tests).
+* when a test fails you wanna run it again for the flaky tests.
+* run this command `npx playwright test abc.spec.js --retries=2`
+* you can give as many retries you want.
 

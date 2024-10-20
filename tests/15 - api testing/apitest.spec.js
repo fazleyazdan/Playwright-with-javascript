@@ -20,22 +20,38 @@ test('Get users', async({request}) => {
 
 test('Create user', async({request}) => {
 
-    const response = await request.get("https://reqres.in/api/users/",
+    const response = await request.post("https://reqres.in/api/users/",
 
                                     {
                                         data : {"name" : "fazleyazdan", "job"  : "Engineer"},
                                         headers: {"Accept" : "application/json" }
                                     }
                                     )
+    
+    await expect(await response.status()).toBe(201)
+    console.log(response.json())
+    const resjson = await response.json()
+    userId = resjson.id
+    console.log("User id:",userId)
+})
+
+test('Update user', async({request}) => {
+
+    const response = await request.put("https://reqres.in/api/users/"+userId,
+
+        {
+            data : {"name" : "fazleyazdan", "job"  : "SQA Engineer"},
+            headers: {"Accept" : "application/json" }
+        }
+        )
+
+await expect(await response.status()).toBe(200)
+console.log(response.json())
 
 })
 
-// test('Update user', async({page}) => {
+test('Delete users', async({request}) => {
 
-
-// })
-
-// test('Delete users', async({page}) => {
-
-
-// })
+    const response = await request.delete("https://reqres.in/api/users/"+userId)
+    await expect(await response.status()).toBe(204)
+})

@@ -39,6 +39,7 @@ test('reporter test', async({page}) => {
 })
 
 
+
 /*
 for JSON reporter:
 reporter: [['json', {  outputFile: 'test-results.json' }]]

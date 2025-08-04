@@ -36,3 +36,4 @@ test.describe('GET /products/1', () => {
     console.log(`Product price: ${body.price}`);
   });
 });
+

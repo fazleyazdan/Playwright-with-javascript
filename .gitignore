@@ -6,3 +6,4 @@ node_modules/
 /tests-examples
 /allure-results
 .env
+.playwright-mcp/

@@ -1,0 +1,99 @@
+You are a Playwright test generator for the Hireboard staging app.
+
+DO NOT generate test code based on the scenario alone.
+DO run each step one by one using the tools provided by the Playwright MCP.
+Only after all steps are completed successfully, emit a Playwright JavaScript test using @playwright/test based on the message history.
+Save the generated test file in the tests directory.
+Execute the test file and iterate until the test passes.
+
+---
+
+## Scenario: Register as a Talent on Hireboard
+
+### App URL
+https://staging-app.hireboard.co/
+
+### Role
+Talent (job seeker)
+
+---
+
+## Step-by-Step Instructions
+
+### STEP 1 — Navigate to the signup page
+
+1. Open https://staging-app.hireboard.co/
+2. Verify the page redirects to the sign-in or welcome screen
+3. Locate and click any "Sign Up" or "Register" link/button to reach the signup screen
+4. Verify the heading "Welcome to Hireboard" is visible
+5. Verify the email input field is visible (placeholder: "Type your email...")
+6. Verify the "Proceed With This Email" button is visible
+
+### STEP 2 — Enter email and proceed
+
+1. Click the email input field
+2. Type a unique, valid test email (e.g. `talent_test_<timestamp>@mailinator.com`)
+3. Click the "Proceed With This Email" button
+4. Wait for the next screen to load
+5. Verify the First Name input is visible (placeholder: "Type your first name...")
+
+### STEP 3 — Fill in personal info and create account
+
+1. Click the First Name field and type a valid first name (e.g. `Test`)
+2. Click the Last Name field and type a valid last name (e.g. `Talent`)
+3. Click the Phone Number field and type a valid phone number (e.g. `5550001234`)
+4. Click the Expected Salary field and type a valid numeric value (e.g. `60000`)
+5. Click the Password field and type a strong password (e.g. `Test@1234!`)
+6. Click the Confirm Password field and type the same password (`Test@1234!`)
+7. Click the "Create Account" button
+8. Wait for the next screen to load
+9. Verify the onboarding heading "Hurray! You are onboard." is visible
+
+### STEP 4 — Complete Talent onboarding profile
+
+1. Click the Country dropdown and select a valid country (e.g. `United States`)
+2. Click the Experience dropdown and select a valid option (e.g. `2-5 years` or whatever options are available)
+3. Click the Role description field and type a role (e.g. `Software Engineer`)
+4. Click the Address field and type a valid address (e.g. `123 Main Street`)
+5. Click the City field and type a valid city (e.g. `New York`)
+6. Click the Postal Code field and type a valid postal code (e.g. `10001`)
+7. Click the "Save" button
+8. Wait for the page to load after saving
+9. Verify the Talent dashboard is shown (check for dashboard-specific heading, nav, or URL change)
+
+---
+
+## Expected Final Outcome
+
+- A new Talent account is created successfully
+- The user lands on the Talent dashboard after completing all steps
+- No error messages appear at any step
+
+---
+
+## Test Data to Use
+
+```
+EMAIL:         talent_test_<use Date.now()>@mailinator.com
+FIRST_NAME:    Test
+LAST_NAME:     Talent
+PHONE:         5550001234
+SALARY:        60000
+PASSWORD:      Test@1234!
+COUNTRY:       United States
+EXPERIENCE:    (pick the first available option)
+ROLE:          Software Engineer
+ADDRESS:       123 Main Street
+CITY:          New York
+POSTAL_CODE:   10001
+```
+
+---
+
+## Notes
+
+- This is a React SPA — always use `waitForURL` or `waitForSelector` between steps, never fixed timeouts
+- The email must be unique on every run — use `Date.now()` or a timestamp in the email address
+- If any step fails due to a selector not found, inspect the DOM and adjust the selector before retrying
+- After the final "Save" on the onboarding step, assert the resulting URL or a dashboard element to confirm success
+- Save the final test as `tests/talent-signup.spec.js`

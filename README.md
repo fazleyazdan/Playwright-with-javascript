@@ -18,7 +18,7 @@
     - [Locating Multiple Elements](#locators-multi)
     - [Built-in Locators](#locators-built)
     
-    
+     
 
 
 <a id="about-pw"></a>
